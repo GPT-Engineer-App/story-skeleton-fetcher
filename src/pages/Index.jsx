@@ -32,29 +32,29 @@ const Index = () => {
         placeholder="Search stories..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-4"
+        className="mb-4 p-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       {isLoading && (
         <div>
           {[...Array(10)].map((_, index) => (
-            <Skeleton key={index} className="w-full h-20 mb-4" />
+            <Skeleton key={index} className="w-full h-20 mb-4 rounded-md" />
           ))}
         </div>
       )}
       {error && (
-        <Alert>
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription>Failed to fetch stories. Please try again later.</AlertDescription>
+        <Alert className="mb-4 border-l-4 border-red-500 bg-red-50 p-4 rounded-md">
+          <AlertTitle className="font-bold text-red-700">Error</AlertTitle>
+          <AlertDescription className="text-red-700">Failed to fetch stories. Please try again later.</AlertDescription>
         </Alert>
       )}
       {filteredStories?.map((story) => (
-        <Card key={story.id} className="mb-4">
-          <CardHeader>
-            <CardTitle>{story.title}</CardTitle>
+        <Card key={story.id} className="mb-4 shadow-md rounded-md">
+          <CardHeader className="p-4 border-b">
+            <CardTitle className="text-xl font-semibold">{story.title}</CardTitle>
           </CardHeader>
-          <CardContent>
-            <p>{story.score} upvotes</p>
-            <a href={story.url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
+          <CardContent className="p-4">
+            <p className="text-gray-700">{story.score} upvotes</p>
+            <a href={story.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
               Read more
             </a>
           </CardContent>
